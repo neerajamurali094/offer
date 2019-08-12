@@ -1,0 +1,28 @@
+{
+    "name": "DeductionValueType",
+    "fields": [
+        {
+            "fieldName": "deductionValueType",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "priceRule",
+            "otherEntityName": "priceRule",
+            "otherEntityRelationshipName": "deductionValueType"
+        }
+    ],
+    "changelogDate": "20190723070538",
+    "javadoc": "DeductionValueType entity.\nrepresents amount or percentage type to deduct\n@author Anjali",
+    "entityTableName": "deduction_value_type",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "Offer",
+    "applications": "*",
+    "microserviceName": "Offer"
+}

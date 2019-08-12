@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="priceRule">
+            <h2><span jhiTranslate="offerApp.offerPriceRule.detail.title">Price Rule</span> {{priceRule.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="offerApp.offerPriceRule.deductionValue">Deduction Value</span></dt>
+                <dd>
+                    <span>{{priceRule.deductionValue}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.allocationLimit">Allocation Limit</span></dt>
+                <dd>
+                    <span>{{priceRule.allocationLimit}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.oncePerCustomer">Once Per Customer</span></dt>
+                <dd>
+                    <span>{{priceRule.oncePerCustomer}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.usageLimit">Usage Limit</span></dt>
+                <dd>
+                    <span>{{priceRule.usageLimit}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{priceRule.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{priceRule.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{priceRule.createdDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{priceRule.updatedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.prerequisiteSubtotalRange">Prerequisite Subtotal Range</span></dt>
+                <dd>
+                    <span>{{priceRule.prerequisiteSubtotalRange}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.prerequisiteQuantityRange">Prerequisite Quantity Range</span></dt>
+                <dd>
+                    <span>{{priceRule.prerequisiteQuantityRange}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.prerequisiteShippingPriceRange">Prerequisite Shipping Price Range</span></dt>
+                <dd>
+                    <span>{{priceRule.prerequisiteShippingPriceRange}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.targetType">Target Type</span></dt>
+                <dd>
+                    <div *ngIf="priceRule.targetTypeId">
+                        <a [routerLink]="['/target-type', priceRule.targetTypeId, 'view']">{{priceRule.targetTypeId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.deductionValueType">Deduction Value Type</span></dt>
+                <dd>
+                    <div *ngIf="priceRule.deductionValueTypeId">
+                        <a [routerLink]="['/deduction-value-type', priceRule.deductionValueTypeId, 'view']">{{priceRule.deductionValueTypeId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.customerSelection">Customer Selection</span></dt>
+                <dd>
+                    <div *ngIf="priceRule.customerSelectionId">
+                        <a [routerLink]="['/customer-selection', priceRule.customerSelectionId, 'view']">{{priceRule.customerSelectionId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerPriceRule.allocationMethod">Allocation Method</span></dt>
+                <dd>
+                    <div *ngIf="priceRule.allocationMethodId">
+                        <a [routerLink]="['/allocation-method', priceRule.allocationMethodId, 'view']">{{priceRule.allocationMethodId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/price-rule', priceRule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{
+    "name": "OrderRule",
+    "fields": [
+        {
+            "fieldName": "prerequisiteOrderNumber",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190723070536",
+    "javadoc": "OrderRule entity.\norder rule of the offer\n@author Anjali",
+    "entityTableName": "order_rule",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "Offer",
+    "applications": "*",
+    "microserviceName": "Offer"
+}

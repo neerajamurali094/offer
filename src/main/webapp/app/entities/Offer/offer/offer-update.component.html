@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-offer-heading" jhiTranslate="offerApp.offerOffer.home.createOrEditLabel">Create or edit a Offer</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!offer.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="offer.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerOffer.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                        [(ngModel)]="offer.title" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerOffer.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="offer.description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerOffer.createdDate" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="createdDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerOffer.updatedDate" for="field_updatedDate">Updated Date</label>
+                    <div class="d-flex">
+                        <input id="field_updatedDate" type="datetime-local" class="form-control" name="updatedDate" [(ngModel)]="updatedDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerOffer.promoCode" for="field_promoCode">Promo Code</label>
+                    <input type="text" class="form-control" name="promoCode" id="field_promoCode"
+                        [(ngModel)]="offer.promoCode" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerOffer.usageCount" for="field_usageCount">Usage Count</label>
+                    <input type="number" class="form-control" name="usageCount" id="field_usageCount"
+                        [(ngModel)]="offer.usageCount" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerOffer.priceRule" for="field_priceRule">Price Rule</label>
+                    <select class="form-control" id="field_priceRule" name="priceRule" [(ngModel)]="offer.priceRuleId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="priceRuleOption.id" *ngFor="let priceRuleOption of pricerules; trackBy: trackPriceRuleById">{{priceRuleOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerOffer.paymentRule" for="field_paymentRule">Payment Rule</label>
+                    <select class="form-control" id="field_paymentRule" name="paymentRule" [(ngModel)]="offer.paymentRuleId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="paymentRuleOption.id" *ngFor="let paymentRuleOption of paymentrules; trackBy: trackPaymentRuleById">{{paymentRuleOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerOffer.orderRule" for="field_orderRule">Order Rule</label>
+                    <select class="form-control" id="field_orderRule" name="orderRule" [(ngModel)]="offer.orderRuleId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="orderRuleOption.id" *ngFor="let orderRuleOption of orderrules; trackBy: trackOrderRuleById">{{orderRuleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+  "offerApp": {
+    "offerOfferTargetCategory": {
+      "home": {
+        "title": "Offer Target Categories",
+        "createLabel": "Create a new Offer Target Category",
+        "createOrEditLabel": "Create or edit a Offer Target Category",
+        "search": "Search for Offer Target Category"
+      },
+      "created": "A new Offer Target Category is created with identifier {{ param }}",
+      "updated": "A Offer Target Category is updated with identifier {{ param }}",
+      "deleted": "A Offer Target Category is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Offer Target Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Offer Target Category"
+      },
+      "targetCategoryId": "Target Category Id",
+      "offer": "Offer"
+    }
+  }
+}

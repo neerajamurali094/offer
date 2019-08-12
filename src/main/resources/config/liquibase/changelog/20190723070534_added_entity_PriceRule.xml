@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity PriceRule.
+    -->
+    <changeSet id="20190723070534-1" author="jhipster">
+        <createTable tableName="price_rule" remarks="PriceRule entity. represents the price rule of the offer @author Anjali">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="deduction_value" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="allocation_limit" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="once_per_customer" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="usage_limit" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="start_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="end_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="updated_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="prerequisite_subtotal_range" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="prerequisite_quantity_range" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="prerequisite_shipping_price_range" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="target_type_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_price_rule_target_type_id" />
+            </column>
+            <column name="deduction_value_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="customer_selection_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="allocation_method_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="price_rule" columnName="start_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="price_rule" columnName="end_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="price_rule" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="price_rule" columnName="updated_date" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

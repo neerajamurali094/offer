@@ -1,0 +1,25 @@
+{
+  "offerApp": {
+    "offerTargetType": {
+      "home": {
+        "title": "Target Types",
+        "createLabel": "Create a new Target Type",
+        "createOrEditLabel": "Create or edit a Target Type",
+        "search": "Search for Target Type"
+      },
+      "created": "A new Target Type is created with identifier {{ param }}",
+      "updated": "A Target Type is updated with identifier {{ param }}",
+      "deleted": "A Target Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Target Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Target Type"
+      },
+      "targetType": "Target Type",
+      "help": {
+        "targetType": "line-item or shipping line"
+      }
+    }
+  }
+}

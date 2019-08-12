@@ -1,0 +1,115 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-price-rule-heading" jhiTranslate="offerApp.offerPriceRule.home.createOrEditLabel">Create or edit a Price Rule</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!priceRule.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="priceRule.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.deductionValue" for="field_deductionValue">Deduction Value</label>
+                    <input type="number" class="form-control" name="deductionValue" id="field_deductionValue"
+                        [(ngModel)]="priceRule.deductionValue" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.allocationLimit" for="field_allocationLimit">Allocation Limit</label>
+                    <input type="number" class="form-control" name="allocationLimit" id="field_allocationLimit"
+                        [(ngModel)]="priceRule.allocationLimit" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.oncePerCustomer" for="field_oncePerCustomer">Once Per Customer</label>
+                    <input type="checkbox" class="form-control" name="oncePerCustomer" id="field_oncePerCustomer"
+                        [(ngModel)]="priceRule.oncePerCustomer" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.usageLimit" for="field_usageLimit">Usage Limit</label>
+                    <input type="number" class="form-control" name="usageLimit" id="field_usageLimit"
+                        [(ngModel)]="priceRule.usageLimit" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.startDate" for="field_startDate">Start Date</label>
+                    <div class="d-flex">
+                        <input id="field_startDate" type="datetime-local" class="form-control" name="startDate" [(ngModel)]="startDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.endDate" for="field_endDate">End Date</label>
+                    <div class="d-flex">
+                        <input id="field_endDate" type="datetime-local" class="form-control" name="endDate" [(ngModel)]="endDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.createdDate" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="createdDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.updatedDate" for="field_updatedDate">Updated Date</label>
+                    <div class="d-flex">
+                        <input id="field_updatedDate" type="datetime-local" class="form-control" name="updatedDate" [(ngModel)]="updatedDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.prerequisiteSubtotalRange" for="field_prerequisiteSubtotalRange">Prerequisite Subtotal Range</label>
+                    <input type="number" class="form-control" name="prerequisiteSubtotalRange" id="field_prerequisiteSubtotalRange"
+                        [(ngModel)]="priceRule.prerequisiteSubtotalRange" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.prerequisiteQuantityRange" for="field_prerequisiteQuantityRange">Prerequisite Quantity Range</label>
+                    <input type="number" class="form-control" name="prerequisiteQuantityRange" id="field_prerequisiteQuantityRange"
+                        [(ngModel)]="priceRule.prerequisiteQuantityRange" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.prerequisiteShippingPriceRange" for="field_prerequisiteShippingPriceRange">Prerequisite Shipping Price Range</label>
+                    <input type="number" class="form-control" name="prerequisiteShippingPriceRange" id="field_prerequisiteShippingPriceRange"
+                        [(ngModel)]="priceRule.prerequisiteShippingPriceRange" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.targetType" for="field_targetType">Target Type</label>
+                    <select class="form-control" id="field_targetType" name="targetType" [(ngModel)]="priceRule.targetTypeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="targetTypeOption.id" *ngFor="let targetTypeOption of targettypes; trackBy: trackTargetTypeById">{{targetTypeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.deductionValueType" for="field_deductionValueType">Deduction Value Type</label>
+                    <select class="form-control" id="field_deductionValueType" name="deductionValueType" [(ngModel)]="priceRule.deductionValueTypeId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="deductionValueTypeOption.id" *ngFor="let deductionValueTypeOption of deductionvaluetypes; trackBy: trackDeductionValueTypeById">{{deductionValueTypeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.customerSelection" for="field_customerSelection">Customer Selection</label>
+                    <select class="form-control" id="field_customerSelection" name="customerSelection" [(ngModel)]="priceRule.customerSelectionId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="customerSelectionOption.id" *ngFor="let customerSelectionOption of customerselections; trackBy: trackCustomerSelectionById">{{customerSelectionOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPriceRule.allocationMethod" for="field_allocationMethod">Allocation Method</label>
+                    <select class="form-control" id="field_allocationMethod" name="allocationMethod" [(ngModel)]="priceRule.allocationMethodId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="allocationMethodOption.id" *ngFor="let allocationMethodOption of allocationmethods; trackBy: trackAllocationMethodById">{{allocationMethodOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

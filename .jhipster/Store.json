@@ -1,0 +1,32 @@
+{
+    "name": "Store",
+    "fields": [
+        {
+            "fieldName": "storeId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "outletId",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "offer",
+            "otherEntityName": "offer",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190723070537",
+    "javadoc": "Store entity.\n@author Anjali",
+    "entityTableName": "store",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "Offer",
+    "applications": "*",
+    "microserviceName": "Offer"
+}

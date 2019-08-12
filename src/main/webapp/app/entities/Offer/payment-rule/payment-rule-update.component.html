@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-payment-rule-heading" jhiTranslate="offerApp.offerPaymentRule.home.createOrEditLabel">Create or edit a Payment Rule</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!paymentRule.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="paymentRule.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPaymentRule.paymentMode" for="field_paymentMode">Payment Mode</label>
+                    <input type="text" class="form-control" name="paymentMode" id="field_paymentMode"
+                        [(ngModel)]="paymentRule.paymentMode" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPaymentRule.authorizedProvider" for="field_authorizedProvider">Authorized Provider</label>
+                    <input type="text" class="form-control" name="authorizedProvider" id="field_authorizedProvider"
+                        [(ngModel)]="paymentRule.authorizedProvider" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPaymentRule.cashBackType" for="field_cashBackType">Cash Back Type</label>
+                    <input type="number" class="form-control" name="cashBackType" id="field_cashBackType"
+                        [(ngModel)]="paymentRule.cashBackType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPaymentRule.cashBackValue" for="field_cashBackValue">Cash Back Value</label>
+                    <input type="number" class="form-control" name="cashBackValue" id="field_cashBackValue"
+                        [(ngModel)]="paymentRule.cashBackValue" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerPaymentRule.numberOfTransactionLimit" for="field_numberOfTransactionLimit">Number Of Transaction Limit</label>
+                    <input type="number" class="form-control" name="numberOfTransactionLimit" id="field_numberOfTransactionLimit"
+                        [(ngModel)]="paymentRule.numberOfTransactionLimit" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

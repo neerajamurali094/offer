@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="store">
+            <h2><span jhiTranslate="offerApp.offerStore.detail.title">Store</span> {{store.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="offerApp.offerStore.storeId">Store Id</span></dt>
+                <dd>
+                    <span>{{store.storeId}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerStore.outletId">Outlet Id</span></dt>
+                <dd>
+                    <span>{{store.outletId}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerStore.offer">Offer</span></dt>
+                <dd>
+                    <div *ngIf="store.offerId">
+                        <a [routerLink]="['/offer', store.offerId, 'view']">{{store.offerId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/store', store.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

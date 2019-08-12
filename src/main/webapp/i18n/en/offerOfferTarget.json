@@ -1,0 +1,23 @@
+{
+  "offerApp": {
+    "offerOfferTarget": {
+      "home": {
+        "title": "Offer Targets",
+        "createLabel": "Create a new Offer Target",
+        "createOrEditLabel": "Create or edit a Offer Target",
+        "search": "Search for Offer Target"
+      },
+      "created": "A new Offer Target is created with identifier {{ param }}",
+      "updated": "A Offer Target is updated with identifier {{ param }}",
+      "deleted": "A Offer Target is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Offer Target {{ id }}?"
+      },
+      "detail": {
+        "title": "Offer Target"
+      },
+      "targetId": "Target Id",
+      "offer": "Offer"
+    }
+  }
+}

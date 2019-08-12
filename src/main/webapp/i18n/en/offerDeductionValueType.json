@@ -1,0 +1,23 @@
+{
+  "offerApp": {
+    "offerDeductionValueType": {
+      "home": {
+        "title": "Deduction Value Types",
+        "createLabel": "Create a new Deduction Value Type",
+        "createOrEditLabel": "Create or edit a Deduction Value Type",
+        "search": "Search for Deduction Value Type"
+      },
+      "created": "A new Deduction Value Type is created with identifier {{ param }}",
+      "updated": "A Deduction Value Type is updated with identifier {{ param }}",
+      "deleted": "A Deduction Value Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Deduction Value Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Deduction Value Type"
+      },
+      "deductionValueType": "Deduction Value Type",
+      "priceRule": "Price Rule"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+    "name": "OfferTarget",
+    "fields": [
+        {
+            "fieldName": "targetId",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "offer",
+            "otherEntityName": "offer",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190723070531",
+    "javadoc": "OfferTarget entity.\nto store the products with offers\n@author Anjali",
+    "entityTableName": "offer_target",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "Offer",
+    "applications": "*",
+    "microserviceName": "Offer"
+}

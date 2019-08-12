@@ -1,0 +1,26 @@
+{
+  "offerApp": {
+    "offerAllocationMethod": {
+      "home": {
+        "title": "Allocation Methods",
+        "createLabel": "Create a new Allocation Method",
+        "createOrEditLabel": "Create or edit a Allocation Method",
+        "search": "Search for Allocation Method"
+      },
+      "created": "A new Allocation Method is created with identifier {{ param }}",
+      "updated": "A Allocation Method is updated with identifier {{ param }}",
+      "deleted": "A Allocation Method is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Allocation Method {{ id }}?"
+      },
+      "detail": {
+        "title": "Allocation Method"
+      },
+      "allocationMethod": "Allocation Method",
+      "priceRule": "Price Rule",
+      "help": {
+        "allocationMethod": "shipping-line :each  line-item:across"
+      }
+    }
+  }
+}

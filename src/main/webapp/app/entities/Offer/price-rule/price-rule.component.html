@@ -1,0 +1,121 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="offerApp.offerPriceRule.home.title">Price Rules</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-price-rule" [routerLink]="['/price-rule/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="offerApp.offerPriceRule.home.createLabel">
+            Create new Price Rule
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'offerApp.offerPriceRule.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="priceRules">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="deductionValue"><span jhiTranslate="offerApp.offerPriceRule.deductionValue">Deduction Value</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="allocationLimit"><span jhiTranslate="offerApp.offerPriceRule.allocationLimit">Allocation Limit</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="oncePerCustomer"><span jhiTranslate="offerApp.offerPriceRule.oncePerCustomer">Once Per Customer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="usageLimit"><span jhiTranslate="offerApp.offerPriceRule.usageLimit">Usage Limit</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="startDate"><span jhiTranslate="offerApp.offerPriceRule.startDate">Start Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="endDate"><span jhiTranslate="offerApp.offerPriceRule.endDate">End Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="offerApp.offerPriceRule.createdDate">Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updatedDate"><span jhiTranslate="offerApp.offerPriceRule.updatedDate">Updated Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="prerequisiteSubtotalRange"><span jhiTranslate="offerApp.offerPriceRule.prerequisiteSubtotalRange">Prerequisite Subtotal Range</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="prerequisiteQuantityRange"><span jhiTranslate="offerApp.offerPriceRule.prerequisiteQuantityRange">Prerequisite Quantity Range</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="prerequisiteShippingPriceRange"><span jhiTranslate="offerApp.offerPriceRule.prerequisiteShippingPriceRange">Prerequisite Shipping Price Range</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="targetTypeId"><span jhiTranslate="offerApp.offerPriceRule.targetType">Target Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="deductionValueTypeId"><span jhiTranslate="offerApp.offerPriceRule.deductionValueType">Deduction Value Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="customerSelectionId"><span jhiTranslate="offerApp.offerPriceRule.customerSelection">Customer Selection</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="allocationMethodId"><span jhiTranslate="offerApp.offerPriceRule.allocationMethod">Allocation Method</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let priceRule of priceRules ;trackBy: trackId">
+                <td><a [routerLink]="['/price-rule', priceRule.id, 'view' ]">{{priceRule.id}}</a></td>
+                <td>{{priceRule.deductionValue}}</td>
+                <td>{{priceRule.allocationLimit}}</td>
+                <td>{{priceRule.oncePerCustomer}}</td>
+                <td>{{priceRule.usageLimit}}</td>
+                <td>{{priceRule.startDate | date:'medium'}}</td>
+                <td>{{priceRule.endDate | date:'medium'}}</td>
+                <td>{{priceRule.createdDate | date:'medium'}}</td>
+                <td>{{priceRule.updatedDate | date:'medium'}}</td>
+                <td>{{priceRule.prerequisiteSubtotalRange}}</td>
+                <td>{{priceRule.prerequisiteQuantityRange}}</td>
+                <td>{{priceRule.prerequisiteShippingPriceRange}}</td>
+                <td>
+                    <div *ngIf="priceRule.targetTypeId">
+                        <a [routerLink]="['../target-type', priceRule.targetTypeId , 'view' ]" >{{priceRule.targetTypeId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="priceRule.deductionValueTypeId">
+                        <a [routerLink]="['../deduction-value-type', priceRule.deductionValueTypeId , 'view' ]" >{{priceRule.deductionValueTypeId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="priceRule.customerSelectionId">
+                        <a [routerLink]="['../customer-selection', priceRule.customerSelectionId , 'view' ]" >{{priceRule.customerSelectionId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="priceRule.allocationMethodId">
+                        <a [routerLink]="['../allocation-method', priceRule.allocationMethodId , 'view' ]" >{{priceRule.allocationMethodId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/price-rule', priceRule.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/price-rule', priceRule.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'price-rule/'+ priceRule.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="priceRules && priceRules.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

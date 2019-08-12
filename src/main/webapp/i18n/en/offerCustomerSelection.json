@@ -1,0 +1,23 @@
+{
+  "offerApp": {
+    "offerCustomerSelection": {
+      "home": {
+        "title": "Customer Selections",
+        "createLabel": "Create a new Customer Selection",
+        "createOrEditLabel": "Create or edit a Customer Selection",
+        "search": "Search for Customer Selection"
+      },
+      "created": "A new Customer Selection is created with identifier {{ param }}",
+      "updated": "A Customer Selection is updated with identifier {{ param }}",
+      "deleted": "A Customer Selection is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Customer Selection {{ id }}?"
+      },
+      "detail": {
+        "title": "Customer Selection"
+      },
+      "customerSelectionType": "Customer Selection Type",
+      "priceRule": "Price Rule"
+    }
+  }
+}

@@ -1,0 +1,148 @@
+/**
+ * OfferTarget entity.
+ * to store the products with offers
+ * @author Anjali
+ */
+entity OfferTarget{
+	targetId Long			//productId
+}
+
+/**
+ * OfferTargetCategory entity.
+ * to store the product category with offers
+ * @author Anjali
+ */
+entity OfferTargetCategory{
+    targetCategoryId Long		//productCategoryId
+}
+
+/**
+ * Offer entity.
+ * entity to store the offer
+ * @author Anjali
+ */
+entity Offer{
+	title String,
+	description String,
+	createdDate Instant,
+    updatedDate Instant,
+    promoCode String,
+    usageCount Long
+}
+
+/**
+ * PriceRule entity.
+ * represents the price rule of the offer
+ * @author Anjali
+ */
+entity PriceRule{
+    deductionValue Long, 	 		//amount or percent offer value to deduct 		
+    allocationLimit Long,			//maximum items for discount
+    oncePerCustomer Boolean,		
+    usageLimit Long,
+    startDate Instant,
+    endDate Instant,
+    createdDate Instant,
+    updatedDate Instant,
+    prerequisiteSubtotalRange Double,		//minimumoredervalue
+    prerequisiteQuantityRange Double,		//minimumquantity
+    prerequisiteShippingPriceRange Double  //minimum amount for free delivery	   	
+}
+
+/**
+ * PaymentRule entity.
+ * payment rules of the offer
+ * @author Anjali
+ */
+entity PaymentRule{
+	paymentMode String,
+    authorizedProvider String,
+    cashBackType Long,
+    cashBackValue Long,
+    numberOfTransactionLimit Long
+}
+
+/**
+ * OrderRule entity.
+ * order rule of the offer
+ * @author Anjali
+ */
+entity OrderRule{
+	prerequisiteOrderNumber Long
+}
+/**
+ * Store entity.
+ * @author Anjali
+ */
+entity Store{
+	storeId Long,
+    outletId Long
+}
+
+/**
+ * DeductionValueType entity.
+ * represents amount or percentage type to deduct
+ * @author Anjali
+ */
+entity DeductionValueType{
+	deductionValueType String		 
+}
+
+/**
+ * CustomerSelection entity.
+ * entity represents all users or not
+ * @author Anjali
+ */
+entity CustomerSelection{
+	customerSelectionType String
+}
+
+/**
+ * TargetType entity.
+ * @author Anjali
+ */
+entity TargetType{
+	targetType String			/**line-item or shipping line**/
+}
+
+/**
+ * AllocationMethod entity.
+ * @author Anjali
+ */
+entity AllocationMethod{
+	allocationMethod String			/**shipping-line :each  line-item:across**/
+}
+
+/**
+ * Country entity.
+ * @author Anjali
+ */
+entity Country{
+	countryName String,
+    countryCode String
+}
+
+relationship OneToMany{
+	Offer{stores} to Store{offer},
+    Offer{offerTargets} to OfferTarget{offer},
+    Offer{offerTargetCategories} to OfferTargetCategory{offer},
+    Offer{countries} to Country{offer}
+}
+
+relationship OneToOne{
+	Offer{priceRule} to PriceRule,
+    Offer{paymentRule} to PaymentRule,
+    Offer{orderRule} to OrderRule,
+    PriceRule{targetType} to TargetType
+}
+
+relationship ManyToOne{
+	PriceRule{deductionValueType} to DeductionValueType{priceRule},
+    PriceRule{customerSelection} to CustomerSelection{priceRule},
+    PriceRule{allocationMethod} to AllocationMethod{priceRule}
+}
+
+paginate * with pagination
+dto * with mapstruct
+service all with serviceImpl
+

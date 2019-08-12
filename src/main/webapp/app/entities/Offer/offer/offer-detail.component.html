@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="offer">
+            <h2><span jhiTranslate="offerApp.offerOffer.detail.title">Offer</span> {{offer.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="offerApp.offerOffer.title">Title</span></dt>
+                <dd>
+                    <span>{{offer.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerOffer.description">Description</span></dt>
+                <dd>
+                    <span>{{offer.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerOffer.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{offer.createdDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerOffer.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{offer.updatedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerOffer.promoCode">Promo Code</span></dt>
+                <dd>
+                    <span>{{offer.promoCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerOffer.usageCount">Usage Count</span></dt>
+                <dd>
+                    <span>{{offer.usageCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerOffer.priceRule">Price Rule</span></dt>
+                <dd>
+                    <div *ngIf="offer.priceRuleId">
+                        <a [routerLink]="['/price-rule', offer.priceRuleId, 'view']">{{offer.priceRuleId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerOffer.paymentRule">Payment Rule</span></dt>
+                <dd>
+                    <div *ngIf="offer.paymentRuleId">
+                        <a [routerLink]="['/payment-rule', offer.paymentRuleId, 'view']">{{offer.paymentRuleId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="offerApp.offerOffer.orderRule">Order Rule</span></dt>
+                <dd>
+                    <div *ngIf="offer.orderRuleId">
+                        <a [routerLink]="['/order-rule', offer.orderRuleId, 'view']">{{offer.orderRuleId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/offer', offer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

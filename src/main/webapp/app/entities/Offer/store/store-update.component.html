@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-store-heading" jhiTranslate="offerApp.offerStore.home.createOrEditLabel">Create or edit a Store</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!store.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="store.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerStore.storeId" for="field_storeId">Store Id</label>
+                    <input type="number" class="form-control" name="storeId" id="field_storeId"
+                        [(ngModel)]="store.storeId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerStore.outletId" for="field_outletId">Outlet Id</label>
+                    <input type="number" class="form-control" name="outletId" id="field_outletId"
+                        [(ngModel)]="store.outletId" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="offerApp.offerStore.offer" for="field_offer">Offer</label>
+                    <select class="form-control" id="field_offer" name="offer" [(ngModel)]="store.offerId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="offerOption.id" *ngFor="let offerOption of offers; trackBy: trackOfferById">{{offerOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{
+    "name": "PaymentRule",
+    "fields": [
+        {
+            "fieldName": "paymentMode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "authorizedProvider",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cashBackType",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "cashBackValue",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "numberOfTransactionLimit",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190723070535",
+    "javadoc": "PaymentRule entity.\npayment rules of the offer\n@author Anjali",
+    "entityTableName": "payment_rule",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "Offer",
+    "applications": "*",
+    "microserviceName": "Offer"
+}

@@ -1,0 +1,26 @@
+{
+  "offerApp": {
+    "offerPaymentRule": {
+      "home": {
+        "title": "Payment Rules",
+        "createLabel": "Create a new Payment Rule",
+        "createOrEditLabel": "Create or edit a Payment Rule",
+        "search": "Search for Payment Rule"
+      },
+      "created": "A new Payment Rule is created with identifier {{ param }}",
+      "updated": "A Payment Rule is updated with identifier {{ param }}",
+      "deleted": "A Payment Rule is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment Rule {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Rule"
+      },
+      "paymentMode": "Payment Mode",
+      "authorizedProvider": "Authorized Provider",
+      "cashBackType": "Cash Back Type",
+      "cashBackValue": "Cash Back Value",
+      "numberOfTransactionLimit": "Number Of Transaction Limit"
+    }
+  }
+}

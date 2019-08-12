@@ -1,0 +1,36 @@
+{
+  "offerApp": {
+    "offerPriceRule": {
+      "home": {
+        "title": "Price Rules",
+        "createLabel": "Create a new Price Rule",
+        "createOrEditLabel": "Create or edit a Price Rule",
+        "search": "Search for Price Rule"
+      },
+      "created": "A new Price Rule is created with identifier {{ param }}",
+      "updated": "A Price Rule is updated with identifier {{ param }}",
+      "deleted": "A Price Rule is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Price Rule {{ id }}?"
+      },
+      "detail": {
+        "title": "Price Rule"
+      },
+      "deductionValue": "Deduction Value",
+      "allocationLimit": "Allocation Limit",
+      "oncePerCustomer": "Once Per Customer",
+      "usageLimit": "Usage Limit",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "prerequisiteSubtotalRange": "Prerequisite Subtotal Range",
+      "prerequisiteQuantityRange": "Prerequisite Quantity Range",
+      "prerequisiteShippingPriceRange": "Prerequisite Shipping Price Range",
+      "targetType": "Target Type",
+      "deductionValueType": "Deduction Value Type",
+      "customerSelection": "Customer Selection",
+      "allocationMethod": "Allocation Method"
+    }
+  }
+}

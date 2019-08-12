@@ -1,0 +1,22 @@
+{
+  "offerApp": {
+    "offerOrderRule": {
+      "home": {
+        "title": "Order Rules",
+        "createLabel": "Create a new Order Rule",
+        "createOrEditLabel": "Create or edit a Order Rule",
+        "search": "Search for Order Rule"
+      },
+      "created": "A new Order Rule is created with identifier {{ param }}",
+      "updated": "A Order Rule is updated with identifier {{ param }}",
+      "deleted": "A Order Rule is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Order Rule {{ id }}?"
+      },
+      "detail": {
+        "title": "Order Rule"
+      },
+      "prerequisiteOrderNumber": "Prerequisite Order Number"
+    }
+  }
+}

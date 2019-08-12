@@ -1,0 +1,21 @@
+dialect "mvel"
+
+import com.diviso.graeshoppe.offer.model.OrderModel;
+import com.diviso.graeshoppe.offer.domain.OrderRule;
+import com.diviso.graeshoppe.offer.domain.DeductionValueType;
+import com.diviso.graeshoppe.offer.domain.PriceRule;
+
+rule "SUPER20"
+	no-loop
+	when 
+		$orderModel : OrderModel(getPromoCode()=='SUPER20') 
+		$orderRule : OrderRule(($orderModel.getOrderNumber() % $orderRule.getPrerequisiteOrderNumber())==0)
+		$deductionValueType : DeductionValueType(getDeductionValueType()=='Percentage')
+		$priceRule : PriceRule(getStartDate() < $orderModel.getClaimedDate(),getEndDate() > $orderModel.getClaimedDate());
+ 	then
+ 		modify($orderModel){
+  	  		setOrderDiscountAmount(($priceRule.getDeductionValue()*$orderModel.getOrderTotal())/100);
+  	  	}
+  	  	 System.out.println("in drools else condition");
+  	  	
+ end

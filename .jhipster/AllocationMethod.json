@@ -1,0 +1,29 @@
+{
+    "name": "AllocationMethod",
+    "fields": [
+        {
+            "fieldName": "allocationMethod",
+            "javadoc": "shipping-line :each  line-item:across",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "priceRule",
+            "otherEntityName": "priceRule",
+            "otherEntityRelationshipName": "allocationMethod"
+        }
+    ],
+    "changelogDate": "20190723070541",
+    "javadoc": "AllocationMethod entity.\n@author Anjali",
+    "entityTableName": "allocation_method",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "Offer",
+    "applications": "*",
+    "microserviceName": "Offer"
+}

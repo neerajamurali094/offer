@@ -1,0 +1,28 @@
+{
+    "name": "CustomerSelection",
+    "fields": [
+        {
+            "fieldName": "customerSelectionType",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "priceRule",
+            "otherEntityName": "priceRule",
+            "otherEntityRelationshipName": "customerSelection"
+        }
+    ],
+    "changelogDate": "20190723070539",
+    "javadoc": "CustomerSelection entity.\nentity represents all users or not\n@author Anjali",
+    "entityTableName": "customer_selection",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "Offer",
+    "applications": "*",
+    "microserviceName": "Offer"
+}

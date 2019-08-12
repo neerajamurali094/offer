@@ -1,0 +1,22 @@
+{
+    "name": "TargetType",
+    "fields": [
+        {
+            "fieldName": "targetType",
+            "javadoc": "line-item or shipping line",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190723070540",
+    "javadoc": "TargetType entity.\n@author Anjali",
+    "entityTableName": "target_type",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "Offer",
+    "applications": "*",
+    "microserviceName": "Offer"
+}

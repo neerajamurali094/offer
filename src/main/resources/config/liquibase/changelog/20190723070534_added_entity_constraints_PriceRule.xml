@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity PriceRule.
+    -->
+    <changeSet id="20190723070534-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="target_type_id"
+                                 baseTableName="price_rule"
+                                 constraintName="fk_price_rule_target_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="target_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="deduction_value_type_id"
+                                 baseTableName="price_rule"
+                                 constraintName="fk_price_rule_deduction_value_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="deduction_value_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="customer_selection_id"
+                                 baseTableName="price_rule"
+                                 constraintName="fk_price_rule_customer_selection_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer_selection"/>
+
+        <addForeignKeyConstraint baseColumnNames="allocation_method_id"
+                                 baseTableName="price_rule"
+                                 constraintName="fk_price_rule_allocation_method_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="allocation_method"/>
+
+    </changeSet>
+</databaseChangeLog>

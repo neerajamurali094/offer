@@ -1,0 +1,88 @@
+{
+    "name": "PriceRule",
+    "fields": [
+        {
+            "fieldName": "deductionValue",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "allocationLimit",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "oncePerCustomer",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "usageLimit",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "prerequisiteSubtotalRange",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "prerequisiteQuantityRange",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "prerequisiteShippingPriceRange",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "targetType",
+            "otherEntityName": "targetType",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "priceRule"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "deductionValueType",
+            "otherEntityName": "deductionValueType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "customerSelection",
+            "otherEntityName": "customerSelection",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "allocationMethod",
+            "otherEntityName": "allocationMethod",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190723070534",
+    "javadoc": "PriceRule entity.\nrepresents the price rule of the offer\n@author Anjali",
+    "entityTableName": "price_rule",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "Offer",
+    "applications": "*",
+    "microserviceName": "Offer"
+}

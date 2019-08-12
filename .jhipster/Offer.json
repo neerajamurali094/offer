@@ -1,0 +1,90 @@
+{
+    "name": "Offer",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "promoCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "usageCount",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "priceRule",
+            "otherEntityName": "priceRule",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "offer"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "paymentRule",
+            "otherEntityName": "paymentRule",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "offer"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "orderRule",
+            "otherEntityName": "orderRule",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "offer"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "stores",
+            "otherEntityName": "store",
+            "otherEntityRelationshipName": "offer"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "offerTargets",
+            "otherEntityName": "offerTarget",
+            "otherEntityRelationshipName": "offer"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "offerTargetCategories",
+            "otherEntityName": "offerTargetCategory",
+            "otherEntityRelationshipName": "offer"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "countries",
+            "otherEntityName": "country",
+            "otherEntityRelationshipName": "offer"
+        }
+    ],
+    "changelogDate": "20190723070533",
+    "javadoc": "Offer entity.\nentity to store the offer\n@author Anjali",
+    "entityTableName": "offer",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "Offer",
+    "applications": "*",
+    "microserviceName": "Offer"
+}
