@@ -48,13 +48,13 @@ public class AggregateCommandResource {
 	     */
 	    @PostMapping("/command/offers/create-offer")
 	    @Timed
-	    public ResponseEntity<Offer> createOffer(@RequestBody OfferModel offerModel) throws URISyntaxException {
+	    public ResponseEntity<OfferModel> createOffer(@RequestBody OfferModel offerModel) throws URISyntaxException {
 	        log.debug("REST request to save Offer : {}", offerModel);
 	       
-	        Offer result = aggregateCommandService.saveOffer(offerModel);
-	        return ResponseEntity.created(new URI("/api/command/offers/create-offer/" + result.getId()))
-	            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-	            .body(result);
+	        OfferModel offer = aggregateCommandService.saveOffer(offerModel);
+	        return ResponseEntity.created(new URI("/api/command/offers/create-offer/" + offer.getId()))
+	            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, offer.getId().toString()))
+	            .body(offer);
 	    }
 	    
 	    /**

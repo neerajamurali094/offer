@@ -15,7 +15,7 @@ public interface AggregateCommandService {
      * @param offerModel the entity to save
      * @return the persisted entity
      */
-	Offer saveOffer(OfferModel offerModel);
+	OfferModel saveOffer(OfferModel offerModel);
     
     /**
      * claim the offer.

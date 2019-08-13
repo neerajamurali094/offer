@@ -27,16 +27,19 @@ import com.diviso.graeshoppe.offer.domain.DeductionValueType;
 import com.diviso.graeshoppe.offer.domain.Offer;
 import com.diviso.graeshoppe.offer.domain.OrderRule;
 import com.diviso.graeshoppe.offer.domain.PriceRule;
+import com.diviso.graeshoppe.offer.domain.Store;
 import com.diviso.graeshoppe.offer.model.OfferModel;
 import com.diviso.graeshoppe.offer.model.OrderModel;
 import com.diviso.graeshoppe.offer.repository.DeductionValueTypeRepository;
 import com.diviso.graeshoppe.offer.repository.OfferRepository;
 import com.diviso.graeshoppe.offer.repository.OrderRuleRepository;
 import com.diviso.graeshoppe.offer.repository.PriceRuleRepository;
+import com.diviso.graeshoppe.offer.repository.StoreRepository;
 import com.diviso.graeshoppe.offer.repository.search.DeductionValueTypeSearchRepository;
 import com.diviso.graeshoppe.offer.repository.search.OfferSearchRepository;
 import com.diviso.graeshoppe.offer.repository.search.OrderRuleSearchRepository;
 import com.diviso.graeshoppe.offer.repository.search.PriceRuleSearchRepository;
+import com.diviso.graeshoppe.offer.repository.search.StoreSearchRepository;
 import com.diviso.graeshoppe.offer.service.AggregateCommandService;
 import com.diviso.graeshoppe.offer.service.dto.OrderRuleDTO;
 import com.diviso.graeshoppe.offer.service.dto.PriceRuleDTO;
@@ -44,6 +47,7 @@ import com.diviso.graeshoppe.offer.service.mapper.DeductionValueTypeMapper;
 import com.diviso.graeshoppe.offer.service.mapper.OfferMapper;
 import com.diviso.graeshoppe.offer.service.mapper.OrderRuleMapper;
 import com.diviso.graeshoppe.offer.service.mapper.PriceRuleMapper;
+import com.diviso.graeshoppe.offer.service.mapper.StoreMapper;
 
 /**
  * Service Implementation for managing Offer commands.
@@ -76,11 +80,19 @@ public class AggregateCommandServiceImpl implements AggregateCommandService{
 	 private final DeductionValueTypeMapper deductionValueTypeMapper;
 
      private final DeductionValueTypeSearchRepository deductionValueTypeSearchRepository;
+     
+     private final StoreRepository storeRepository;
+
+     private final StoreMapper storeMapper;
+
+     private final StoreSearchRepository storeSearchRepository;
 
 	 private static final String drlFile = "Offerrule.drl";
 
 	 private KieContainer kieContainer;
 	
+	
+
 	public AggregateCommandServiceImpl(OfferRepository offerRepository, OfferMapper offerMapper,
 			OfferSearchRepository offerSearchRepository, PriceRuleRepository priceRuleRepository,
 			PriceRuleMapper priceRuleMapper, PriceRuleSearchRepository priceRuleSearchRepository,
@@ -88,7 +100,8 @@ public class AggregateCommandServiceImpl implements AggregateCommandService{
 			OrderRuleSearchRepository orderRuleSearchRepository,
 			DeductionValueTypeRepository deductionValueTypeRepository,
 			DeductionValueTypeMapper deductionValueTypeMapper,
-			DeductionValueTypeSearchRepository deductionValueTypeSearchRepository, KieContainer kieContainer) {
+			DeductionValueTypeSearchRepository deductionValueTypeSearchRepository, StoreRepository storeRepository,
+			StoreMapper storeMapper, StoreSearchRepository storeSearchRepository, KieContainer kieContainer) {
 		super();
 		this.offerRepository = offerRepository;
 		this.offerMapper = offerMapper;
@@ -102,6 +115,9 @@ public class AggregateCommandServiceImpl implements AggregateCommandService{
 		this.deductionValueTypeRepository = deductionValueTypeRepository;
 		this.deductionValueTypeMapper = deductionValueTypeMapper;
 		this.deductionValueTypeSearchRepository = deductionValueTypeSearchRepository;
+		this.storeRepository = storeRepository;
+		this.storeMapper = storeMapper;
+		this.storeSearchRepository = storeSearchRepository;
 		this.kieContainer = kieContainer;
 	}
 
@@ -112,7 +128,7 @@ public class AggregateCommandServiceImpl implements AggregateCommandService{
 	     * @return the persisted entity
 	     */
 	 @Override
-	 public Offer saveOffer(OfferModel offerModel) {
+	 public OfferModel saveOffer(OfferModel offerModel) {
 		 log.debug("Request to save Offer : {}", offerModel);
 		 
 		    Offer offer=new Offer();
@@ -137,7 +153,15 @@ public class AggregateCommandServiceImpl implements AggregateCommandService{
 		 	
 		 	Offer savedOffer=offerRepository.save(offer);
 		 	
-	        return savedOffer;
+		 	Store store=new Store();
+		 	store.setStoreId(offerModel.getStoreId());
+		 	store.setOffer(savedOffer);
+		 	Store savedStore=storeRepository.save(store);
+		 	
+		 	offerModel.setId(savedOffer.getId());
+		 	offerModel.setStoreId(savedStore.getId());
+		 	
+	        return offerModel;
 	 }
 
 	 /**
