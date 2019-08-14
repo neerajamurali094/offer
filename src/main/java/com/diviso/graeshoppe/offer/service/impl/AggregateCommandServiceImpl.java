@@ -162,9 +162,10 @@ public class AggregateCommandServiceImpl implements AggregateCommandService{
 		 	store.setStoreId(offerModel.getStoreId());
 		 	store.setOffer(savedOffer);
 		 	Store savedStore=storeRepository.save(store);
-		 	offerModel.setId(savedOffer.getId());
 		 	offerModel.setStoreId(savedStore.getStoreId());
 		 	}
+		 	
+		 	offerModel.setId(savedOffer.getId());
 		 	
 	        return offerModel;
 	 }
