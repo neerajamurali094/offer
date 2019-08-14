@@ -157,12 +157,14 @@ public class AggregateCommandServiceImpl implements AggregateCommandService{
 		 		Offer elasticOffer=offerSearchRepository.save(savedOffer);
 		 	}
 		 	
+		 	if(offerModel.getStoreId()!=null){
 		 	Store store=new Store();
 		 	store.setStoreId(offerModel.getStoreId());
 		 	store.setOffer(savedOffer);
 		 	Store savedStore=storeRepository.save(store);
 		 	offerModel.setId(savedOffer.getId());
 		 	offerModel.setStoreId(savedStore.getStoreId());
+		 	}
 		 	
 	        return offerModel;
 	 }
