@@ -48,6 +48,7 @@ import com.diviso.graeshoppe.offer.service.mapper.OfferMapper;
 import com.diviso.graeshoppe.offer.service.mapper.OrderRuleMapper;
 import com.diviso.graeshoppe.offer.service.mapper.PriceRuleMapper;
 import com.diviso.graeshoppe.offer.service.mapper.StoreMapper;
+import com.diviso.graeshoppe.offer.web.rest.errors.BadRequestAlertException;
 
 /**
  * Service Implementation for managing Offer commands.
@@ -132,8 +133,7 @@ public class AggregateCommandServiceImpl implements AggregateCommandService{
 		 log.debug("Request to save Offer : {}", offerModel);
 		 
 		    Offer offer=new Offer();
-		 	
-		 	OrderRule orderRule=new OrderRule();
+		    OrderRule orderRule=new OrderRule();
 		 	orderRule.setPrerequisiteOrderNumber(offerModel.getPrerequisiteOrderNumber());
 		 	OrderRule savedOrderRule=orderRuleRepository.save(orderRule);
 		 	
@@ -153,13 +153,16 @@ public class AggregateCommandServiceImpl implements AggregateCommandService{
 		 	
 		 	Offer savedOffer=offerRepository.save(offer);
 		 	
+		 	if(savedOffer.getId()!=null){
+		 		Offer elasticOffer=offerSearchRepository.save(savedOffer);
+		 	}
+		 	
 		 	Store store=new Store();
 		 	store.setStoreId(offerModel.getStoreId());
 		 	store.setOffer(savedOffer);
 		 	Store savedStore=storeRepository.save(store);
-		 	
 		 	offerModel.setId(savedOffer.getId());
-		 	offerModel.setStoreId(savedStore.getId());
+		 	offerModel.setStoreId(savedStore.getStoreId());
 		 	
 	        return offerModel;
 	 }

@@ -51,7 +51,11 @@ public class AggregateCommandResource {
 	    public ResponseEntity<OfferModel> createOffer(@RequestBody OfferModel offerModel) throws URISyntaxException {
 	        log.debug("REST request to save Offer : {}", offerModel);
 	       
+	        if (offerModel.getId() != null) {
+	            throw new BadRequestAlertException("A new offer cannot already have an ID", ENTITY_NAME, "idexists");
+	        }
 	        OfferModel offer = aggregateCommandService.saveOffer(offerModel);
+	        
 	        return ResponseEntity.created(new URI("/api/command/offers/create-offer/" + offer.getId()))
 	            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, offer.getId().toString()))
 	            .body(offer);

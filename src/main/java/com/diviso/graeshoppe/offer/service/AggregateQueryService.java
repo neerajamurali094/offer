@@ -30,6 +30,14 @@ public interface AggregateQueryService {
     Page<OfferDTO> findAllOffers(Pageable pageable);
     
     /**
+     * Get all offers by storeId.
+     *
+     * @param pageable the pagination information
+     * @return the list of entities
+     */
+    Page<OfferDTO> findAllOffersByStoreId(Pageable pageable,Long storeId);
+    
+    /**
      * Get all the offer deductionValueTypes.
      *
      * @param pageable the pagination information

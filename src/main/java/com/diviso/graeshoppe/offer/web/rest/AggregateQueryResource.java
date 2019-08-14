@@ -70,6 +70,23 @@ public class AggregateQueryResource {
     }
     
     /**
+     * GET  /offers : get all the offers by storeId.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of offers in body
+     */
+    @GetMapping("/query/offers/get-all-offers-by-storeId/{storeId}")
+    @Timed
+    public ResponseEntity<List<OfferDTO>> getAllOffersByStoreId(Pageable pageable,@PathVariable Long storeId) {
+        log.debug("REST request to get a page of Offers by storeId");
+        Page<OfferDTO> page = aggregateQueryService.findAllOffersByStoreId(pageable,storeId);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/query/offers/get-all-offers");
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+    
+    
+    
+    /**
      * GET  /deduction-value-types : get all the deductionValueTypes of offers.
      *
      * @param pageable the pagination information
@@ -83,4 +100,7 @@ public class AggregateQueryResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/query/offers/get-all-deduction-value-types");
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
+    
+    
+    
 }
