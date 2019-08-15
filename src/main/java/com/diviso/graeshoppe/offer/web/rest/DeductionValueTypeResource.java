@@ -28,8 +28,8 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 /**
  * REST controller for managing DeductionValueType.
  */
-@RestController
-@RequestMapping("/api")
+//@RestController
+//@RequestMapping("/api")
 public class DeductionValueTypeResource {
 
     private final Logger log = LoggerFactory.getLogger(DeductionValueTypeResource.class);
