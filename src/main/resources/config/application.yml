@@ -16,7 +16,7 @@
 
 feign:
     hystrix:
-        enabled: false
+        enabled: true
 #    client:
 #        config:
 #            default:
