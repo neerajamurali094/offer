@@ -103,13 +103,13 @@ jhipster:
         version: V_1_1 # To use HTTP/2 you will need to activate TLS (see application-tls.yml)
     # CORS is disabled by default on microservices, as you should access them through a gateway.
     # If you want to enable it, please uncomment the configuration below.
-    # cors:
-        # allowed-origins: "*"
-        # allowed-methods: "*"
-        # allowed-headers: "*"
-        # exposed-headers: "Authorization,Link,X-Total-Count"
-        # allow-credentials: true
-        # max-age: 1800
+    cors:
+         allowed-origins: "*"
+         allowed-methods: "*"
+         allowed-headers: "*"
+         exposed-headers: "Authorization,Link,X-Total-Count"
+         allow-credentials: true
+         max-age: 1800
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: Offer@localhost
         base-url: http://127.0.0.1:8095
