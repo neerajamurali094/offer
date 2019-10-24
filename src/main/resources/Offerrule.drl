@@ -19,3 +19,18 @@ rule "SUPER20"
   	  	 System.out.println("in drools else condition");
   	  	
  end
+ 
+ rule "SUPER10"
+	no-loop
+	when 
+		$orderModel : OrderModel(getPromoCode()=='SUPER10') 
+		$orderRule : OrderRule(($orderModel.getOrderNumber() % $orderRule.getPrerequisiteOrderNumber())==0 || $orderModel.getOrderNumber()==1 )
+		$deductionValueType : DeductionValueType(getDeductionValueType()=='Percentage')
+		$priceRule : PriceRule(getStartDate() < $orderModel.getClaimedDate(),getEndDate() > $orderModel.getClaimedDate());
+ 	then
+ 		modify($orderModel){
+  	  		setOrderDiscountAmount(($priceRule.getDeductionValue()*$orderModel.getOrderTotal())/100);
+  	  	}
+  	  	 System.out.println("in drools else condition");
+  	  	
+ end
