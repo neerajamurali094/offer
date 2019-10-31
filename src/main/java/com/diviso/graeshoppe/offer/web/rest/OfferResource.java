@@ -29,8 +29,8 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 /**
  * REST controller for managing Offer.
  */
-//@RestController
-//@RequestMapping("/api")
+@RestController
+@RequestMapping("/api")
 public class OfferResource {
 
     private final Logger log = LoggerFactory.getLogger(OfferResource.class);
