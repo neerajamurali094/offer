@@ -10,34 +10,42 @@ public class OrderModel {
 	
 	private Instant claimedDate;
 
-	private Long orderTotal;
+	private Double orderTotal;
 	
-	private Long orderDiscountAmount;
+	private Double orderDiscountAmount;
 	
-	private Long orderDiscountTotal;
+	private Double orderDiscountTotal;
 	
-	public Long getOrderDiscountAmount() {
+	public Double getOrderTotal() {
+		return orderTotal;
+	}
+
+	public void setOrderTotal(Double orderTotal) {
+		this.orderTotal = orderTotal;
+	}
+
+	public Double getOrderDiscountAmount() {
 		return orderDiscountAmount;
 	}
 
-	public void setOrderDiscountAmount(Long orderDiscountAmount) {
+	public void setOrderDiscountAmount(Double orderDiscountAmount) {
 		this.orderDiscountAmount = orderDiscountAmount;
 	}
-	
+
+	public Double getOrderDiscountTotal() {
+		return orderDiscountTotal;
+	}
+
+	public void setOrderDiscountTotal(Double orderDiscountTotal) {
+		this.orderDiscountTotal = orderDiscountTotal;
+	}
+
 	public Instant getClaimedDate() {
 		return claimedDate;
 	}
 
 	public void setClaimedDate(Instant claimedDate) {
 		this.claimedDate = claimedDate;
-	}
-
-	public Long getOrderDiscountTotal() {
-		return orderDiscountTotal;
-	}
-
-	public void setOrderDiscountTotal(Long orderDiscountTotal) {
-		this.orderDiscountTotal = orderDiscountTotal;
 	}
 
 	public String getPromoCode() {
@@ -56,12 +64,4 @@ public class OrderModel {
 		this.orderNumber = orderNumber;
 	}
 
-	public Long getOrderTotal() {
-		return orderTotal;
-	}
-
-	public void setOrderTotal(Long orderTotal) {
-		this.orderTotal = orderTotal;
-	}
-	
 }
